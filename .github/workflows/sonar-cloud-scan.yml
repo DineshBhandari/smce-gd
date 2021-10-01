@@ -9,12 +9,12 @@ jobs:
   build:
     name: Build
     runs-on: windows-latest
-      strategy:
-        matrix:
-          compiler:
-            - name: MSVC
-              c: cl
-              cxx: cl
+    strategy:
+      matrix:
+        compiler:
+          - name: MSVC
+            c: cl
+            cxx: cl
     env:
       SONAR_SCANNER_VERSION: 4.4.0.2170
       SONAR_SERVER_URL: "https://sonarcloud.io"
