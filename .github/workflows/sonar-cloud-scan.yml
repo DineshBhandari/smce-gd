@@ -66,7 +66,7 @@ jobs:
         run: cmake --build ./build
       - name: Run build-wrapper
         run: |
-          build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }}<insert_your_clean_build_command>
+          build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }}cmake --build build --target godot-smce
       - name: Run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
