@@ -1,4 +1,4 @@
-name: Build
+name: SonarCloud Scan
 on:
   push:
     branches:
@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   build:
-    name: Build
+    name: SonarCloud Scan
     runs-on: windows-latest
     strategy:
       matrix:
@@ -35,8 +35,6 @@ jobs:
           echo "Godot version: $godot_version_output"
           echo "::set-output name=GODOT_VERSION::$([regex]::Matches($godot_version_output, "\d+\.\d+(?:\.\d+)?\.\w+").Value)"
           echo "::set-output name=GODOT_TEMPLATE_CACHE_KEY::$($env:GODOT_EXPORT_TEMPLATE_VERSION.Replace('.', ''))"
-          wget -O libsmce.zip https://github.com/ItJustWorksTM/libSMCE/releases/download/$($env:LIBSMCE_TAG)/libSMCE-$($env:LIBSMCE_VERSION)-Windows-AMD64-MSVC-Release.zip
-          7z x libsmce.zip -oC:\
           ren C:\libSMCE-$($env:LIBSMCE_VERSION)-Windows-AMD64-MSVC-Release C:\smce
       - name: Set up JDK 11
         uses: actions/setup-java@v1
